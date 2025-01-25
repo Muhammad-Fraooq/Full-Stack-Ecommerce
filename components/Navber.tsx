@@ -7,8 +7,6 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
-import logo from "@/public/images/logo.png";
 import CartIcon from "./CartIcon";
 import { BsBasket } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
