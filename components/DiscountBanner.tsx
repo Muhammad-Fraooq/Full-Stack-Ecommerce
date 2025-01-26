@@ -16,60 +16,64 @@ import Link from "next/link";
 
 const DiscountBanner = ({ sales }: { sales: SALE_QUERYResult }) => {
   return (
-    <Carousel className="w-full max-w-screen-xl mx-auto my-10 ">
+    <Carousel className="w-full max-w-screen-xl mx-auto my-10 relative overflow-hidden">
       <CarouselContent>
-        {sales?.map((sale) => {
-          return (
-            <CarouselItem key={sale?._id}>
-              <Card>
-                <CardContent className="p-0">
-                  <div className="flex flex-col md:flex-row items-center ">
-                    <div className="flex-1 p-6 md:p-12">
-                      <Badge
-                        variant="secondary"
-                        className="mb-2 md:mb-4 text-darkBlue capitalize"
-                      >
-                        {sale?.badge} {sale?.discountAmount}% off
-                      </Badge>
-                      <h2 className="text-2xl md:text-3xl lg:text-text-4xl fond-bold tracking-tight mb-2 md:mb-4">
-                        {sale?.title}
-                      </h2>
-                      <p className="text-muted-foreground mb-2 md:mb-4">
-                        {sale?.description}
-                      </p>
-                      <p className="mb-2">
-                        Use code:{" "}
-                        <span className="font-semibold uppercase text-primary">
-                          {sale?.couponCode}
-                        </span>{" "}
-                        for{" "}
-                        <span className="font-semibold">
-                          {sale?.discountAmount}
-                        </span>
-                        %OFF
-                      </p>
-                      <Link href={`/shop`}><Button>Shop Now</Button></Link>
-                    </div>
-                    {sale?.image && (
-                      <div className="w-full md:w-1/2 h-auto flex items-center justify-center py-2">
-                        <Image
-                          src={urlFor(sale?.image).url()}
-                          alt="BannerImage"
-                          width={500}
-                          height={500}
-                          className="h-auto transition-transform hover:scale-105 duration-500 ease-in-out"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          );
-        })}
+        {sales?.map((sale) => (
+          <CarouselItem
+            key={sale?._id}
+            className="flex flex-col lg:flex-row items-center justify-between gap-6 p-6 lg:p-10"
+          >
+            {/* Text Content */}
+            <div className="flex-1 flex flex-col justify-center items-start text-center lg:text-left">
+              <Badge
+                variant="secondary"
+                className="mb-4 text-darkBlue capitalize text-lg bg-blue-100 px-3 py-1"
+              >
+                {sale?.badge} {sale?.discountAmount}% OFF
+              </Badge>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+                {sale?.title}
+              </h2>
+              <p className="text-gray-600 mb-4">
+                {sale?.description}
+              </p>
+              <p className="text-sm md:text-base font-medium mb-4">
+                Use code:{" "}
+                <span className="font-semibold uppercase text-primary">
+                  {sale?.couponCode}
+                </span>{" "}
+                for{" "}
+                <span className="font-semibold">
+                  {sale?.discountAmount}% OFF
+                </span>
+              </p>
+              <Link href="/shop">
+                <Button className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2">
+                  Shop Now
+                </Button>
+              </Link>
+            </div>
+
+            {/* Image */}
+            {sale?.image && (
+              <div className="w-full lg:w-1/2 h-auto flex items-center justify-center">
+                <Image
+                  src={urlFor(sale?.image).url()}
+                  alt="Sale Banner"
+                  width={400}
+                  height={400}
+                  className="h-auto object-contain rounded-lg shadow-lg transition-transform hover:scale-105 duration-500 ease-in-out"
+                  priority
+                />
+              </div>
+            )}
+          </CarouselItem>
+        ))}
       </CarouselContent>
-      <CarouselPrevious className="absolute left-2" />
-      <CarouselNext className="absolute right-2" />
+
+      {/* Navigation Arrows */}
+      <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-3 rounded-full shadow-md z-10 transition" />
+      <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 p-3 rounded-full shadow-md z-10 transition" />
     </Carousel>
   );
 };

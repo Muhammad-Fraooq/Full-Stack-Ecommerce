@@ -75,3 +75,8 @@ body , html{
   overflow-x: hidden;
   padding-top: 40px;
 }
+@media (max-width: 820px) {
+  body, html {
+    padding-top: 60px;
+  }
+}

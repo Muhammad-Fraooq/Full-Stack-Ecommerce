@@ -96,34 +96,3 @@ export const getMyOrders = async (userId: string) => {
     }
   };
   
-// export const getAboutUs = async () => {
-//     try {
-//         const About_Us = await sanityFetch({
-//             query: ABOUT_US
-//         });
-//         return About_Us?.data || [];
-//     } catch (error) {
-//         console.error('Error fetching About Us :', error);
-//         return [];
-//     }
-// }
- 
-
-
-
-
-// export const getMyOrders = async (userId: string) => {
-//     if (!userId) {
-//         throw new Error('User ID is required!')
-//     }
-//     try {
-//         const my_orders = await sanityFetch({
-//             query: MY_ORDERS_QUERY,
-//             params: { userId, }
-//         });
-//         return my_orders?.data || [];
-//     } catch (error) {
-//         console.error('Error fetching orders :', error);
-//         return [];
-//     }
-// }
