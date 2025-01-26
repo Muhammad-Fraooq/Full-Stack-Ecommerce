@@ -9,8 +9,6 @@ export const backendClient = createClient({
 });
 
 // Debugging: Log client config (don't log sensitive tokens in production)
-console.log('Sanity Client Config:', {
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  useCdn: false,
-});
+console.log("Sanity Project ID:", process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+console.log("Sanity Dataset:", process.env.NEXT_PUBLIC_SANITY_DATASET);
+console.log("Sanity Token:", process.env.SANITY_API_TOKEN ? "Token is set" : "Token is missing");

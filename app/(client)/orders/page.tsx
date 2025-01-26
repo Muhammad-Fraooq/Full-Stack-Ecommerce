@@ -8,6 +8,8 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
+import { motion } from "framer-motion";
+
 
 // Mark the component as an async function since it contains server-side logic
 const OrdersPage = async () => {
@@ -51,18 +53,44 @@ const OrdersPage = async () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="flex flex-col justify-center items-center py-12 px-4">
-          <h3 className="text-2xl font-semibold text-gray-900">No orders Found.</h3>
-          <p className="mt-2 text-sm text-gray-600 max-w-md text-center">
-            It looks like you haven&apos;t placed any orders yet. Start shopping to see your orders here!
-          </p>
+        <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col justify-center items-center py-12 px-4"
+      >
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-2xl font-semibold text-gray-900"
+        >
+          No orders Found.
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-2 text-sm text-gray-600 max-w-md text-center"
+        >
+          It looks like you haven&apos;t placed any orders yet. Start shopping to
+          see your orders here!
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-6"
+        >
           <Link
-            href="/"
-            className="mt-6 flex items-center gap-2 px-4 py-2 border rounded-md"
+            href="/shop"
+            className="flex items-center gap-2 px-4 py-2 border rounded-md hover:bg-gray-100 transition"
           >
             Browse Products
           </Link>
-        </div>
+        </motion.div>
+      </motion.div>
+  
       )}
     </Container>
   );
