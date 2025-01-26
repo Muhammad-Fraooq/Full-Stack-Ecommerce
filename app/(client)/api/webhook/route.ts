@@ -118,9 +118,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     quantity: item?.quantity || 0,
     imageUrl: (item.price?.product as Stripe.Product)?.images?.[0], // Assuming first image URL
   }));
-
-  const order = Math.floor(Math.random() * 100000).toString(); // Random order ID
-
+  
   // Create the order in Sanity
   try {
     const result = await backendClient.create({
@@ -148,4 +146,5 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     console.error("Error creating order in Sanity:", createError);
     throw createError;
   }
+  
 }
