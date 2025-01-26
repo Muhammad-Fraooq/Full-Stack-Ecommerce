@@ -93,7 +93,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
   }));
   const order = await backendClient.create({
     _type: "order",
-    orderNumber: metadata.orderNumber,
+    orderNumber: orderNumber,
     stripeCheckoutSessionId: id,
     stripePaymentIntentId: payment_intent,
     customerName,
