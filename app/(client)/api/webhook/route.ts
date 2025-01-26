@@ -91,6 +91,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     },
     quantity: item?.quantity || 0,
   }));
+  console.log('Sanity Client:', backendClient);
   const order = await backendClient.create({
     _type: "order",
     orderNumber: orderNumber,
@@ -111,6 +112,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     orderDate: new Date().toISOString(),
   });
   return order;
+  
 }
 
 
