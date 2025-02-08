@@ -104,6 +104,7 @@ const CartPage = () => {
                             className="w-4 h-4 md:w-5 md:h-5 mr-1 text-gray-500 hover:text-red-600 hoverEffect"
                           />
                           {product?.image && (
+                              <Link href={`/product/${product?.slug?.current}`}>
                             <div className="border p-0.5 md:p-1 mr-2 rounded-md overflow-hidden group">
                               <Image
                                 src={urlFor(product.image).url()}
@@ -114,6 +115,7 @@ const CartPage = () => {
                                 className="w-10 h-10 md:w-full md:h-14 object-cover group-hover:scale-105 overflow-hidden transition-transform duration-500"
                               />
                             </div>
+                              </Link>
                           )}
                           <h2 className="text-sm">{product?.name}</h2>
                         </div>
@@ -203,108 +205,3 @@ const CartPage = () => {
 };
 
 export default CartPage;
-
-// <div className="lg:col-span-1">
-// <div className="hidden md:inline-block w-full bg-white p-6 rounded-lg border">
-//   <h2 className="text-xl font-semibold mb-4">
-//     Order Summary
-//   </h2>
-//   <div className="space-y-4">
-//     <div className="flex justify-between">
-//       <span>SubTotal</span>
-//       <PriceFormatter amount={getSubTotalPrice()} />
-//     </div>
-//     <div className="flex justify-between">
-//       <span>Discount</span>
-//       <PriceFormatter
-//         amount={getSubTotalPrice() - getTotalPrice()}
-//       />
-//     </div>
-
-//     <Separator />
-//     <div className="flex justify-between font-semibold text-lg">
-//       <span>Total</span>
-
-//       <PriceFormatter
-//         amount={useCartStore?.getState().getTotalPrice()}
-//         className="text-lg font-bold text-black"
-//       />
-//     </div>
-//     {isSignedIn ? (
-//       <Button
-//         onClick={handleCheckout}
-//         disabled={loading}
-//         className="w-full"
-//         size="lg"
-//       >
-//         {loading ? "Processing" : "Proceed to Checkout"}
-//       </Button>
-//     ) : (
-//       <SignInButton mode="modal">
-//         <Button className="w-full" size="lg">
-//           Sign in to Checkout
-//         </Button>
-//       </SignInButton>
-//     )}
-//     <Link
-//       href="/"
-//       className="block text-center text-sm text-primary hover:underline"
-//     >
-//       Continue Shopping
-//     </Link>
-//   </div>
-// </div>
-// </div>
-
-
-// <div className="md:hidden fixed bottom-0 left-0 w-full bg-lightBg">
-// <div className="bg-white p-4 rounded-lg border mx-4">
-//   <h2 className="text-lg font-semibold mb-2">
-//     Order Summary
-//   </h2>
-//   <div className="space-y-2">
-//     <div className="flex justify-between">
-//       <span>SubTotal</span>
-//       <PriceFormatter amount={getSubTotalPrice()} />
-//     </div>
-//     <div className="flex justify-between">
-//       <span>Discount</span>
-//       <PriceFormatter
-//         amount={getSubTotalPrice() - getTotalPrice()}
-//       />
-//     </div>
-//     <Separator />
-//     <div className="flex justify-between font-semibold text-lg">
-//       <span>Total</span>
-
-//       <PriceFormatter
-//         amount={useCartStore?.getState().getTotalPrice()}
-//         className="text-lg font-bold text-black"
-//       />
-//     </div>
-//     {isSignedIn ? (
-//       <Button
-//         onClick={handleCheckout}
-//         disabled={loading}
-//         className="w-full"
-//         size="lg"
-//       >
-//         {loading ? "Processing" : "Proceed to Checkout"}
-//       </Button>
-//     ) : (
-//       <SignInButton mode="modal">
-//         <Button className="w-full" size="lg">
-//           Sign in to Checkout
-//         </Button>
-//       </SignInButton>
-//     )}
-//     <Link
-//       href="/"
-//       className="block text-center text-sm text-primary hover:underline"
-//     >
-//       Continue Shopping
-//     </Link>
-//   </div>
-// </div>
-// </div>
-

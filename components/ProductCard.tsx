@@ -21,7 +21,7 @@ const ProductCard = ({ product }: Props) => {
         {product?.image && (
           <Link href={`/product/${product?.slug?.current}`}>
             <Image
-              src={urlFor(product.image).url()}
+              src={product?.image ? urlFor(product?.image).url() : "https://via.placeholder.com/400"}
               alt={product?.name || "Product Image"}
               width={400}
               height={400}
